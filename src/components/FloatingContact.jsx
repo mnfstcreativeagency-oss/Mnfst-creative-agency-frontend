@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { HiChatAlt2 } from 'react-icons/hi';
+import { BsChatDotsFill } from 'react-icons/bs';
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 
 const FloatingContact = () => {
@@ -12,9 +12,9 @@ const FloatingContact = () => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            {/* Main Icon - Always Visible */}
-            <div className="w-[3.5rem] h-[3.5rem] text-white rounded-full shadow-2xl flex items-center justify-center z-20 relative cursor-pointer hover:scale-105 transition-transform" style={{ backgroundColor: 'var(--accent-primary)' }}>
-                <HiChatAlt2 className="text-2xl" />
+            {/* Main Icon - Red with White Chat Bubbles */}
+            <div className="w-[3.5rem] h-[3.5rem] text-white rounded-full shadow-2xl flex items-center justify-center z-20 relative cursor-pointer hover:scale-105 transition-transform" style={{ backgroundColor: '#EF4444' }}>
+                <BsChatDotsFill className="text-2xl" />
             </div>
 
             {/* Expandable Socials Container */}
