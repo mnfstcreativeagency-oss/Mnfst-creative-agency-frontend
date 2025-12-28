@@ -3,17 +3,58 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Send, ArrowUpRight } from 'lucide-react';
 
 const InquirySection = () => {
-    const [email, setEmail] = useState('');
-    const [isFocused, setIsFocused] = useState(false);
+    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState({ type: '', message: '' });
+    const [emailError, setEmailError] = useState('');
 
-    const handleSubmit = (e) => {
+    const validateEmail = (email) => {
+        // Robsut regex for personal and business emails
+        const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!regex.test(email)) {
+            setEmailError('Please enter a valid email address');
+            return false;
+        }
+        setEmailError('');
+        return true;
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle submission logic (e.g., redirect to full contact or API)
-        console.log("Inquiry for:", email);
+
+        if (!validateEmail(formData.email)) return;
+
+        setLoading(true);
+        setStatus({ type: '', message: '' });
+
+        try {
+            // Using relative path via Vite proxy
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setStatus({ type: 'success', message: 'Message sent! We will be in touch shortly.' });
+                setFormData({ name: '', email: '', message: '' });
+            } else {
+                setStatus({ type: 'error', message: data.message || 'Something went wrong.' });
+            }
+        } catch (error) {
+            console.error('Submission error:', error);
+            setStatus({ type: 'error', message: 'Failed to send message. Is the backend running?' });
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
-        <section className="relative w-full py-32 overflow-hidden" style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
+        <section id="contact" className="relative w-full py-32 overflow-hidden" style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
             {/* --- Background Elements --- */}
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <motion.div
@@ -91,27 +132,70 @@ const InquirySection = () => {
                                 <ArrowUpRight className="ml-2 w-5 h-5 opacity-0 -translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300" style={{ color: 'var(--accent-primary)' }} />
                             </h3>
 
-                            <form onSubmit={handleSubmit} className="relative">
-                                <div className={`relative transition-all duration-300 ${isFocused ? 'scale-[1.02]' : 'scale-100'}`}>
-                                    <input
-                                        type="text"
-                                        placeholder="Type your email or project brief..."
-                                        className="w-full border-none placeholder-gray-500 text-lg md:text-xl p-6 pr-20 rounded-2xl outline-none transition-all"
-                                        style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-primary)' }}
-                                        onFocus={() => setIsFocused(true)}
-                                        onBlur={() => setIsFocused(false)}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        value={email}
-                                    />
-
-                                    <button
-                                        type="submit"
-                                        className="absolute right-3 top-1/2 -translate-y-1/2 p-3 hover:bg-red-600 rounded-xl text-white transition-all shadow-lg hover:shadow-accent/40 active:scale-95 group/btn"
-                                        style={{ backgroundColor: 'var(--accent-primary)' }}
-                                    >
-                                        <Send size={20} className="group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5 transition-transform" />
-                                    </button>
+                            <form onSubmit={handleSubmit} className="relative space-y-6">
+                                {/* Name and Email Row */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div className="relative group/input">
+                                        <input
+                                            type="text"
+                                            placeholder="Your Name"
+                                            className="w-full bg-[var(--bg-primary)] border border-[var(--border-color)] text-[var(--text-primary)] text-lg p-5 rounded-2xl outline-none focus:border-[var(--accent-primary)] transition-all"
+                                            value={formData.name}
+                                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                            required
+                                        />
+                                    </div>
+                                    <div className="relative group/input">
+                                        <input
+                                            type="email"
+                                            placeholder="Email Address"
+                                            className={`w-full bg-[var(--bg-primary)] border text-[var(--text-primary)] text-lg p-5 rounded-2xl outline-none focus:border-[var(--accent-primary)] transition-all ${emailError ? 'border-red-500' : 'border-[var(--border-color)]'}`}
+                                            value={formData.email}
+                                            onChange={(e) => {
+                                                setFormData({ ...formData, email: e.target.value });
+                                                if (emailError) validateEmail(e.target.value);
+                                            }}
+                                            required
+                                        />
+                                        {emailError && <p className="absolute -bottom-6 left-0 text-xs text-red-500">{emailError}</p>}
+                                    </div>
                                 </div>
+
+                                {/* Message Field */}
+                                <div className="relative">
+                                    <textarea
+                                        rows="4"
+                                        placeholder="Tell us about your project..."
+                                        className="w-full bg-[var(--bg-primary)] border border-[var(--border-color)] text-[var(--text-primary)] text-lg p-5 rounded-2xl outline-none focus:border-[var(--accent-primary)] transition-all resize-none"
+                                        value={formData.message}
+                                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                                        required
+                                    ></textarea>
+                                </div>
+
+                                {/* Status Messages */}
+                                {status.message && (
+                                    <div className={`p-4 rounded-xl text-sm ${status.type === 'success' ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'}`}>
+                                        {status.message}
+                                    </div>
+                                )}
+
+                                {/* Submit Button */}
+                                <button
+                                    type="submit"
+                                    disabled={loading}
+                                    className="w-full py-4 rounded-2xl font-bold flex items-center justify-center gap-3 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:hover:scale-100 shadow-lg hover:shadow-accent/40 text-white"
+                                    style={{ backgroundColor: 'var(--accent-primary)' }}
+                                >
+                                    {loading ? (
+                                        <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                                    ) : (
+                                        <>
+                                            <span className="text-lg">Send Message</span>
+                                            <Send size={20} />
+                                        </>
+                                    )}
+                                </button>
                             </form>
 
                             <div className="mt-8 flex items-center justify-between text-sm" style={{ color: 'var(--text-muted)' }}>
