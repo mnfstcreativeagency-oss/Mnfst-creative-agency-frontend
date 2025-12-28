@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Chewy&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+/* MNFST Theme Variables */
+:root {
+  /* MNFST Color Palette */
+  --mnfst-black: #000000;
+  --mnfst-yellow: #fbb657;
+  --mnfst-red: #cf2626;
+}
+
+/* Light Theme (Default) */
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f8f8;
+  --text-primary: #000000;
+  --text-secondary: #333333;
+  --text-muted: #666666;
+  --accent-primary: #cf2626;
+  --accent-secondary: #fbb657;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --nav-bg: rgba(255, 255, 255, 0.95);
+  --scrollbar-track: #ffffff;
+  --scrollbar-thumb: #d1d1d1;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --bg-primary: #000000;
+  --bg-secondary: #1a1a1a;
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --text-muted: #a0a0a0;
+  --accent-primary: #fbb657;
+  --accent-secondary: #cf2626;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --shadow-color: rgba(255, 255, 255, 0.1);
+  --nav-bg: rgba(0, 0, 0, 0.95);
+  --scrollbar-track: #1a1a1a;
+  --scrollbar-thumb: #333333;
+}
+
+@theme {
+  --color-primary: #050505;
+  /* Pure Black for Logo Match */
+  --color-secondary: #ffffff;
+  /* White */
+  --color-accent: #E60023;
+  /* Logo Red */
+  --color-brand-yellow: #FFB400;
+  /* Logo Yellow */
+  --color-light-accent: #FFF5F5;
+
+  --font-space: 'Space Grotesk', sans-serif;
+  --font-dm: 'DM Sans', sans-serif;
+  --font-chewy: 'Chewy', cursive;
+  --font-playfair: 'Playfair Display', serif;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  @apply font-dm overflow-x-hidden;
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Global Smooth Transition */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-space font-bold tracking-tight;
+  color: var(--text-primary);
+}
+
+.font-bubble {
+  @apply font-chewy;
+}
+
+.text-accent {
+  color: var(--accent-primary);
+}
+
+.btn-primary {
+  background-color: var(--accent-primary);
+  @apply text-white px-8 py-3 rounded-full font-bold transition-all duration-300;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+/* Navbar - theme aware */
+.nav-standard {
+  background: var(--nav-bg);
+  backdrop-filter: blur(5px);
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Theme Toggle Button - Fixed Right Middle */
+.theme-toggle {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+.theme-toggle .toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Custom Scrollbar - Theme Aware */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
