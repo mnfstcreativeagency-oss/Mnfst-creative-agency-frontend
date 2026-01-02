@@ -3,8 +3,7 @@ import { AnimatePresence } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Clients from '../components/Clients';
-import Services from '../components/Services';
-import WorkCarousel from '../components/WorkCarousel';
+import WorkVertical from '../components/WorkVertical';
 import Testimonials from '../components/Testimonials';
 import InquirySection from '../components/InquirySection';
 import Footer from '../components/Footer';
@@ -34,8 +33,7 @@ const Home = () => {
                 <main>
                     <Hero />
                     <Clients />
-                    <Services />
-                    <WorkCarousel />
+                    <WorkVertical />
                     <Testimonials />
                     <InquirySection />
                 </main>
