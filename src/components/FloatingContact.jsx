@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { BsChatDotsFill } from 'react-icons/bs';
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import { useTheme } from '../Store/ThemeContext';
 
 const FloatingContact = () => {
+    const { isDark } = useTheme();
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -12,8 +14,8 @@ const FloatingContact = () => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            {/* Main Icon - Red with White Chat Bubbles */}
-            <div className="w-[3.5rem] h-[3.5rem] text-white rounded-full shadow-2xl flex items-center justify-center z-20 relative cursor-pointer hover:scale-105 transition-transform" style={{ backgroundColor: '#EF4444' }}>
+            {/* Main Icon - Red with White Chat Bubbles (Yellow in Dark Mode) */}
+            <div className="w-[3.5rem] h-[3.5rem] text-white rounded-full shadow-2xl flex items-center justify-center z-20 relative cursor-pointer hover:scale-105 transition-transform" style={{ backgroundColor: isDark ? '#EAB308' : '#EF4444' }}>
                 <BsChatDotsFill className="text-2xl" />
             </div>
 

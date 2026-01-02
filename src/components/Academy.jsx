@@ -5,8 +5,11 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { useTheme } from '../Store/ThemeContext';
 
+import thumbnail from '../assets/premier-pro-video-thumbnail.jpg';
+
 const Academy = () => {
     const { isDark } = useTheme();
+    const [isPlaying, setIsPlaying] = useState(false);
 
     // Accent Colors
     const accentColor = isDark ? '#EAB308' : '#EF4444'; // Yellow-500 : Red-500
@@ -68,30 +71,43 @@ const Academy = () => {
                     </div>
 
                     {/* Video Placeholder Container */}
-                    <div className="relative w-full max-w-5xl mx-auto aspect-video bg-black/10 rounded-3xl overflow-hidden border border-white/10 shadow-2xl group cursor-pointer group">
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+                    <div
+                        className="relative w-full max-w-5xl mx-auto aspect-video bg-black/10 rounded-3xl overflow-hidden border border-white/10 shadow-2xl group cursor-pointer"
+                        onClick={() => setIsPlaying(true)}
+                    >
+                        {!isPlaying ? (
+                            <>
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
 
-                        {/* Thumbnail Image (Using a placeholder for now, ideally user provided) */}
-                        <img
-                            src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44c?q=80&w=2000&auto=format&fit=crop"
-                            alt="Video Editing Course"
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
+                                {/* Thumbnail Image (Using a placeholder for now, ideally user provided) */}
+                                <img
+                                    src={thumbnail}
+                                    alt="Video Editing Course"
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
 
-                        {/* Play Button */}
-                        <div className="absolute inset-0 z-20 flex items-center justify-center">
-                            <motion.div
-                                whileHover={{ scale: 1.1 }}
-                                className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 text-white shadow-[0_0_40px_rgba(255,255,255,0.3)] animate-pulse"
-                            >
-                                <FaPlay className="ml-1 text-2xl" />
-                            </motion.div>
-                        </div>
+                                {/* Play Button */}
+                                <div className="absolute inset-0 z-20 flex items-center justify-center">
+                                    <motion.div
+                                        whileHover={{ scale: 1.1 }}
+                                        className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/30 text-white shadow-[0_0_40px_rgba(255,255,255,0.3)] animate-pulse"
+                                    >
+                                        <FaPlay className="ml-1 text-2xl" />
+                                    </motion.div>
+                                </div>
 
-                        {/* Floating Icons */}
-                        <div className="absolute top-10 left-10 p-4 bg-black/40 backdrop-blur rounded-xl border border-white/10 z-20 animate-bounce">
-                            <FaVideo className={`text-3xl ${isDark ? 'text-yellow-400' : 'text-red-400'}`} />
-                        </div>
+
+                            </>
+                        ) : (
+                            <iframe
+                                className="w-full h-full"
+                                src="https://www.youtube.com/embed/R3itumGr0xY?autoplay=1"
+                                title="Premiere Pro Training"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                        )}
                     </div>
                 </section>
 
