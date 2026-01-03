@@ -1,133 +1,164 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaPlay, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-// Placeholder data for vertical videos
 const videos = [
-    { id: 1, title: "Lifestyle", img: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&auto=format&fit=crop" },
-    { id: 2, title: "Tech", img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop" },
-    { id: 3, title: "Fashion", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop" },
-    { id: 4, title: "Travel", img: "https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?q=80&w=1000&auto=format&fit=crop" },
-    { id: 5, title: "Gaming", img: "https://images.unsplash.com/photo-1593640408182-31c70c8268f5?q=80&w=1000&auto=format&fit=crop" },
-    { id: 6, title: "Corporate", img: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000&auto=format&fit=crop" },
+    {
+        id: 1,
+        title: "Edit 1",
+        src: "https://res.cloudinary.com/dkxtthv23/video/upload/abhi_2_tqrqru.mp4",
+        poster:
+            "https://res.cloudinary.com/dkxtthv23/image/upload/v1767422025/abhi_2tqrqrump4_ayvvpw.png",
+    },
+    {
+        id: 2,
+        title: "Edit 2",
+        src: "https://res.cloudinary.com/dkxtthv23/video/upload/bharath3_h73nr4.mp4",
+        poster:
+            "https://res.cloudinary.com/dkxtthv23/image/upload/v1767422025/tolyowd_d3ex9q.png",
+    },
+    {
+        id: 3,
+        title: "Edit 3",
+        src: "https://res.cloudinary.com/dkxtthv23/video/upload/madhuAnna3_h2vtj3.mp4",
+        poster:
+            "https://res.cloudinary.com/dkxtthv23/image/upload/v1767422026/madhuAnna3h2vtj3mp4_vflkts.png",
+    },
+    {
+        id: 4,
+        title: "Edit 4",
+        src: "https://res.cloudinary.com/dkxtthv23/video/upload/kumarAnna3_zs8axr.mp4",
+        poster:
+            "https://res.cloudinary.com/dkxtthv23/image/upload/v1767422027/kumarAnna3zs8axrmp4_ipnt42.png",
+    },
+    {
+        id: 5,
+        title: "Edit 5",
+        src: "https://res.cloudinary.com/dkxtthv23/video/upload/sharavan2_gbb1lm.mp4",
+        poster:
+            "https://res.cloudinary.com/dkxtthv23/image/upload/v1767422027/sharavan2gbb1lmmp4_lulm6h.png",
+    },
+    {
+        id: 6,
+        title: "Edit 6",
+        src: "https://res.cloudinary.com/dkxtthv23/video/upload/04_nok2na.mp4",
+        poster:
+            "https://res.cloudinary.com/dkxtthv23/image/upload/v1767422061/04_nok2namp4poster_kuiup9.png",
+    },
+    {
+        id: 7,
+        title: "Edit 7",
+        src: "https://res.cloudinary.com/dkxtthv23/video/upload/v1767383953/NiharAnna3_ez5qzs.mp4",
+        poster:
+            "https://res.cloudinary.com/dkxtthv23/image/upload/v1767422026/nihar_t2vbwh.png",
+    },
 ];
 
-const WorkVertical = () => {
-    const [activeIndex, setActiveIndex] = useState(2); // Start in middle
+export default function WorkVertical() {
+    const [activeIndex, setActiveIndex] = useState(0);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+    const videoRefs = useRef([]);
 
-    // Circular navigation logic
-    const getIndex = (index) => {
-        const len = videos.length;
-        return ((index % len) + len) % len;
-    };
+    const getIndex = (i) =>
+        ((i % videos.length) + videos.length) % videos.length;
 
-    const handleNext = () => setActiveIndex((prev) => prev + 1);
-    const handlePrev = () => setActiveIndex((prev) => prev - 1);
+    const handleNext = () => setActiveIndex((p) => p + 1);
+    const handlePrev = () => setActiveIndex((p) => p - 1);
 
-    // Auto-play carousel
+    /* autoplay timer */
     useEffect(() => {
         if (!isAutoPlaying) return;
-        const interval = setInterval(handleNext, 3000);
-        return () => clearInterval(interval);
-    }, [isAutoPlaying, activeIndex]);
+        const t = setInterval(() => setActiveIndex((p) => p + 1), 4000);
+        return () => clearInterval(t);
+    }, [isAutoPlaying]);
 
-    // Visibile items: center-2, center-1, center, center+1, center+2
+    /* control playback */
+    useEffect(() => {
+        videoRefs.current.forEach((video, i) => {
+            if (!video) return;
+            if (i === getIndex(activeIndex)) {
+                video.play().catch(() => { });
+            } else {
+                video.pause();
+                video.currentTime = 0;
+            }
+        });
+    }, [activeIndex]);
+
     const visibleOffsets = [-2, -1, 0, 1, 2];
 
-    const getStyle = (offset) => {
-        const styles = {
-            0: { scale: 1, opacity: 1, zIndex: 50, blur: 0, x: 0 },
-            1: { scale: 0.85, opacity: 0.7, zIndex: 40, blur: '2px', x: '60%' },
-            [-1]: { scale: 0.85, opacity: 0.7, zIndex: 40, blur: '2px', x: '-60%' },
-            2: { scale: 0.7, opacity: 0.4, zIndex: 30, blur: '4px', x: '110%' },
-            [-2]: { scale: 0.7, opacity: 0.4, zIndex: 30, blur: '4px', x: '-110%' },
-        };
-        return styles[offset] || { scale: 0, opacity: 0, zIndex: 0 };
-    };
+    const getStyle = (offset) => ({
+        0: { scale: 1, opacity: 1, blur: 0, x: 0, z: 50 },
+        1: { scale: 0.85, opacity: 0.7, blur: 2, x: "60%", z: 40 },
+        "-1": { scale: 0.85, opacity: 0.7, blur: 2, x: "-60%", z: 40 },
+        2: { scale: 0.7, opacity: 0.4, blur: 4, x: "110%", z: 30 },
+        "-2": { scale: 0.7, opacity: 0.4, blur: 4, x: "-110%", z: 30 },
+    }[offset] || { scale: 0, opacity: 0, blur: 0, x: 0, z: 0 });
 
     return (
-        <section className="w-full py-24 overflow-hidden" style={{ backgroundColor: 'var(--bg-primary)' }}>
-            <div className="container mx-auto px-4 text-center mb-16">
-                <h2 className="text-4xl md:text-6xl font-bold font-space text-center" style={{ color: 'var(--text-primary)' }}>
-                    Our viral <span className="relative inline-block px-2">
-                        short-form
-                        <span className="absolute bottom-1 left-0 w-full h-3 md:h-4 -z-10 bg-accent/40 rounded-sm transform -rotate-1"></span>
-                    </span> edits
-                </h2>
-            </div>
+        <section className="w-full py-24 overflow-hidden">
+            <h2 className="text-center text-5xl font-bold text-white mb-16">
+                Our viral <span className="text-accent">short-form</span> edits
+            </h2>
 
-            <div
-                className="relative h-[500px] md:h-[600px] flex items-center justify-center max-w-[1400px] mx-auto select-none"
-                onMouseEnter={() => setIsAutoPlaying(false)}
-                onMouseLeave={() => setIsAutoPlaying(true)}
-            >
-                {/* Navigation Buttons */}
+            <div className="relative h-[600px] flex items-center justify-center max-w-[1400px] mx-auto">
+                {/* arrows */}
                 <button
                     onClick={handlePrev}
-                    className="absolute left-4 md:left-20 z-50 p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-3xl hover:bg-white/20 transition-all hover:scale-110"
-                    style={{ color: 'var(--text-primary)' }}
+                    className="absolute left-6 z-50 p-4 rounded-full bg-white/10 text-white"
                 >
                     <FaChevronLeft />
                 </button>
                 <button
                     onClick={handleNext}
-                    className="absolute right-4 md:right-20 z-50 p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-3xl hover:bg-white/20 transition-all hover:scale-110"
-                    style={{ color: 'var(--text-primary)' }}
+                    className="absolute right-6 z-50 p-4 rounded-full bg-white/10 text-white"
                 >
                     <FaChevronRight />
                 </button>
 
-                {/* Carousel Tracks */}
-                <div className="relative w-full h-full flex items-center justify-center perspective-1000">
-                    {visibleOffsets.map((offset) => {
-                        const index = getIndex(activeIndex + offset);
-                        const video = videos[index];
-                        const style = getStyle(offset);
+                {/* cards */}
+                {visibleOffsets.map((offset) => {
+                    const index = getIndex(activeIndex + offset);
+                    const video = videos[index];
+                    const style = getStyle(offset);
+                    const isCenter = offset === 0;
 
-                        return (
-                            <motion.div
-                                key={`${video.id}-${offset}`} // Unique key for animation stability
-                                layout
-                                initial={false}
-                                animate={{
-                                    scale: style.scale,
-                                    opacity: style.opacity,
-                                    x: style.x,
-                                    zIndex: style.zIndex,
-                                    filter: `blur(${style.blur})`
-                                }}
-                                transition={{ duration: 0.5, ease: "easeOut" }}
-                                className="absolute w-[280px] md:w-[320px] aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl border border-white/10 cursor-pointer bg-gray-900"
-                                onClick={() => {
-                                    if (offset === 0) {
-                                        window.open('https://drive.google.com/drive/folders/1bn2EPTzHRth7-jx2-0og2_rch5J_BchR?usp=sharing', '_blank');
-                                    } else {
-                                        setActiveIndex(prev => prev + offset);
-                                    }
-                                }}
-                            >
-                                <img
-                                    src={video.img}
-                                    alt={video.title}
-                                    className="w-full h-full object-cover"
+                    return (
+                        <motion.div
+                            key={`${video.id}-${offset}`}
+                            className="absolute w-[280px] md:w-[320px] aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl"
+                            animate={{
+                                scale: style.scale,
+                                opacity: isCenter ? 1 : style.opacity,
+                                x: style.x,
+                                filter: `blur(${style.blur}px)`,
+                                zIndex: style.z,
+                            }}
+                            transition={{ duration: 0.5, ease: "easeOut" }}
+                            onClick={() => !isCenter && setActiveIndex((p) => p + offset)}
+                            onMouseEnter={() => isCenter && setIsAutoPlaying(false)}
+                            onMouseLeave={() => setIsAutoPlaying(true)}
+                        >
+                            {/* inner clean layer */}
+                            <div className="w-full h-full">
+                                <video
+                                    ref={(el) => (videoRefs.current[index] = el)}
+                                    src={video.src}
+                                    poster={video.poster}
+                                    className={`w-full h-full object-cover ${!isCenter ? "pointer-events-none" : ""
+                                        }`}
+                                    muted
+                                    loop
+                                    playsInline
+                                    preload={isCenter ? "auto" : "metadata"}
+                                    controls={isCenter}
+
                                 />
-                                <div className="absolute inset-0 bg-black/20"></div>
-
-                                {offset === 0 && (
-                                    <div className="absolute inset-0 flex items-center justify-center">
-                                        <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center pl-1 animate-pulse">
-                                            <FaPlay className="text-white text-2xl" />
-                                        </div>
-                                    </div>
-                                )}
-                            </motion.div>
-                        );
-                    })}
-                </div>
+                            </div>
+                        </motion.div>
+                    );
+                })}
             </div>
         </section>
     );
-};
-
-export default WorkVertical;
+}
