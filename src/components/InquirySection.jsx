@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Send, ArrowUpRight } from 'lucide-react';
+import { apiPath } from '../utils/api';
 
 const InquirySection = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -28,8 +29,8 @@ const InquirySection = () => {
         setStatus({ type: '', message: '' });
 
         try {
-            // Using relative path via Vite proxy
-            const response = await fetch('/api/contact', {
+            // Using relative path via Vite proxy or VITE_API_URL
+            const response = await fetch(apiPath('/api/contact'), {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
