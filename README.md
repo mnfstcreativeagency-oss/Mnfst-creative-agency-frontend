@@ -24,4 +24,3 @@ VITE_API_URL=https://mnfst-backend.onrender.com
 ```
 
 When developing locally the app falls back to the Vite dev proxy (use `/api` paths). After changing `.env`, restart the dev server: `npm run dev`.
-
