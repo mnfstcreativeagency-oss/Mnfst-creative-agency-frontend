@@ -96,13 +96,11 @@ const Preloader = ({ finishLoading }) => {
                                             initial={{ width: 0, opacity: 0, x: -20 }}
                                             animate={{ width: "auto", opacity: 1, x: 0 }}
                                             transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-                                            className="text-[#fbb657]"
                                         >f</motion.span>
                                         <motion.span
                                             initial={{ width: 0, opacity: 0, x: -20 }}
                                             animate={{ width: "auto", opacity: 1, x: 0 }}
                                             transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-                                            className="text-[#fbb657]"
                                         >s</motion.span>
                                     </>
                                 )}
