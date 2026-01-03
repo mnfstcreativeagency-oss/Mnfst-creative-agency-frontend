@@ -78,6 +78,10 @@ const JoinUs = () => {
     try {
       // Using logic from contact form + extra fields
       const response = await fetch(apiPath("/api/joinus"), {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({ ...formData, role: selectedRole.title }),
       });
 
@@ -267,11 +271,10 @@ const JoinUs = () => {
 
                 {status.message && (
                   <div
-                    className={`p-3 rounded-lg text-center text-sm font-bold ${
-                      status.type === "success"
+                    className={`p-3 rounded-lg text-center text-sm font-bold ${status.type === "success"
                         ? "bg-green-500/20 text-green-500"
                         : "bg-red-500/20 text-red-500"
-                    }`}
+                      }`}
                   >
                     {status.message}
                   </div>
