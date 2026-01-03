@@ -183,11 +183,10 @@ const InquirySection = () => {
                     <input
                       type="email"
                       placeholder="Email Address"
-                      className={`w-full bg-[var(--bg-primary)] border text-[var(--text-primary)] text-lg p-5 rounded-2xl outline-none focus:border-[var(--accent-primary)] transition-all ${
-                        emailError
-                          ? "border-red-500"
-                          : "border-[var(--border-color)]"
-                      }`}
+                      className={`w-full bg-[var(--bg-primary)] border text-[var(--text-primary)] text-lg p-5 rounded-2xl outline-none focus:border-[var(--accent-primary)] transition-all ${emailError
+                        ? "border-red-500"
+                        : "border-[var(--border-color)]"
+                        }`}
                       value={formData.email}
                       onChange={(e) => {
                         setFormData({ ...formData, email: e.target.value });
@@ -220,11 +219,10 @@ const InquirySection = () => {
                 {/* Status Messages */}
                 {status.message && (
                   <div
-                    className={`p-4 rounded-xl text-sm ${
-                      status.type === "success"
-                        ? "bg-green-500/10 text-green-500"
-                        : "bg-red-500/10 text-red-500"
-                    }`}
+                    className={`p-4 rounded-xl text-sm ${status.type === "success"
+                      ? "bg-green-500/10 text-green-500"
+                      : "bg-red-500/10 text-red-500"
+                      }`}
                   >
                     {status.message}
                   </div>
@@ -252,14 +250,17 @@ const InquirySection = () => {
                 className="mt-8 flex items-center justify-between text-sm"
                 style={{ color: "var(--text-muted)" }}
               >
-                <span>Typical response: 24h</span>
-                <a
-                  href="mailto:hello@mnfst.agency"
-                  className="transition-colors border-b border-transparent"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  hello@mnfst.agency
-                </a>
+                <span>Typical response: 24h</span>  
+                <div className="flex-column">
+                  <a
+                    href="mailto:hello@mnfst.agency"
+                    className="transition-colors border-b border-transparent pb-4"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    mnfst.creativeagency@gmail.com
+                  </a>
+                  <p>Contact:+91 95021 83045</p>
+                </div>
               </div>
             </div>
           </motion.div>
