@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import JoinUsCanvas from '../components/JoinUsCanvas';
 import { FaVideo, FaPenNib, FaPaintBrush, FaCode, FaBullhorn, FaTimes, FaBriefcase } from 'react-icons/fa';
 import { useTheme } from '../Store/ThemeContext';
+import { apiPath } from '../utils/api';
 
 const roles = [
     {
@@ -63,9 +64,7 @@ const JoinUs = () => {
 
         try {
             // Using logic from contact form + extra fields
-            const response = await fetch('/api/joinus', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                const response = await fetch(apiPath('/api/joinus'), {
                 body: JSON.stringify({ ...formData, role: selectedRole.title }),
             });
 
