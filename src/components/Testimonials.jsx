@@ -5,24 +5,21 @@ import { FaGoogle, FaStar, FaCheckCircle, FaChevronRight } from 'react-icons/fa'
 const testimonials = [
     {
         id: 1,
-        name: "Aaditya Bhatia",
-        date: "1 month ago",
-        review: "Their team really took the time to understand our business (a niche manufacturing unit) before suggesting strategy. The design, copy and targeting were spot on.",
-        image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&q=80&w=100"
+        name: "Lazy Learning",
+        review: "Every edit is crafted with precision and eye for detail. Understands the audience pulse and makes every video as engaging as possible. The most important aspect to hire any editor is the turnaround time for the deliverables. Sharavan is the best in maintaining turnaround time, and working in tight deadlines. This instills immense trust on him. I suggest mnfst anyday to any creator looking for professional output from the boring raw footages!",
+        image: "https://res.cloudinary.com/dkxtthv23/image/upload/v1766905060/lazylearning_eglrzi.jpg"
     },
     {
         id: 2,
-        name: "zoya siddiqi",
-        date: "1 month ago",
-        review: "We signed up with Digital Mojo about six months ago to manage our Facebook + Google ads. After an initial ramp-up, we saw our lead cost drop by 25%, and the quality improved.",
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100"
+        name: "levelupwithkumar",
+        review: "It’s been a great experience working with you. You always deliver the work on time and maintain excellent punctuality throughout the project. What I really appreciate is your patience and flexibility.. no matter how many revisions I requested, you handled every change professionally and ensured complete satisfaction. Your creativity is unique and adds real value to the content. Along with your strong work management skills, your friendly and approachable nature makes collaboration smooth and comfortable. Truly reliable and easy to work with.",
+        image: "https://res.cloudinary.com/dkxtthv23/image/upload/v1766905060/levelupwithkumar_wclkwl.jpg"
     },
     {
         id: 3,
-        name: "Rahul Verma",
-        date: "2 months ago",
-        review: "The rebranding strategy was a game changer for us. We saw immediate engagement growth on social channels.",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100"
+        name: "Abhi Top Tech",
+        review: "I’ve worked with Sharavan from MNFST Creative Agency, and the experience was excellent. He delivered videos on time, maintained immediate and clear communication, and showed great creativity in every edit. What stood out the most was the deep research he puts into content before editing, which reflects strongly in the final output. I’m completely satisfied with the quality of work and overall collaboration",
+        image: "https://res.cloudinary.com/dkxtthv23/image/upload/v1766905059/abhitopintech_iagykh.jpg"
     }
 ];
 
