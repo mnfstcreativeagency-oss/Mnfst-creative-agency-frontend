@@ -11,12 +11,15 @@ import Navbar from './components/Navbar';
 import About from './components/About';
 
 import FloatingContact from './components/FloatingContact';
+import SpotlightCursor from './components/SpotlightCursor';
 
 function App() {
   const location = useLocation();
 
   return (
     <>
+      <SpotlightCursor />
+      {/* Global Components */}
       <ThemeToggle />
       <Navbar />
       <FloatingContact />

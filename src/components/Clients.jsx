@@ -6,7 +6,7 @@ const logos = [
     { name: "Level Up With Kumar", image: "https://res.cloudinary.com/dkxtthv23/image/upload/v1766905060/levelupwithkumar_wclkwl.jpg" },
     { name: "Nihar", image: "https://res.cloudinary.com/dkxtthv23/image/upload/v1766905060/nihar_qqwwfe.jpg" },
     { name: "Sahara Family Vlogs", image: "https://res.cloudinary.com/dkxtthv23/image/upload/v1766905060/sahara_gunegc.jpg" },
-    { name: "Likhith Mullapudi", image: "https://res.cloudinary.com/dkxtthv23/image/upload/v1766905059/likith_hizcij.jpg" },
+    { name: "Vaibhav", image: "https://res.cloudinary.com/dkxtthv23/image/upload/v1768757081/WhatsApp_Image_2026-01-18_at_10.47.19_PM_xlwllx.jpg" },
     { name: "AI With Aakash", image: "https://res.cloudinary.com/dkxtthv23/image/upload/v1766905059/akash_a3vlpr.jpg" },
     { name: "Abhi Top Tech", image: "https://res.cloudinary.com/dkxtthv23/image/upload/v1766905059/abhitopintech_iagykh.jpg" },
     { name: "Asian Monk Wall Art", image: "https://res.cloudinary.com/dkxtthv23/image/upload/v1766905059/asain_monk_ezibvo.jpg" },
