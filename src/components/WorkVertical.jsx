@@ -52,7 +52,56 @@ const videos = [
         poster:
             "https://res.cloudinary.com/dkxtthv23/image/upload/v1767422026/nihar_t2vbwh.png",
     },
-];
+    {
+        id: 8,
+        title: "Edit 8",
+        src: "https://res.cloudinary.com/dkxtthv23/video/upload/v1768755564/madhuAnna5_ohp5rz.mp4",
+        poster:
+            "https://res.cloudinary.com/dkxtthv23/image/upload/v1768756516/Screenshot_2026-01-18_223719_bivybn.png",
+    },{
+        id: 9,
+        title: "Edit 9",
+        src: "https://res.cloudinary.com/dkxtthv23/video/upload/v1768755579/kumarAnna5_itxulk.mp4",
+        poster:
+            "https://res.cloudinary.com/dkxtthv23/image/upload/v1768756516/Screenshot_2026-01-18_223819_rcrjby.png",
+    },{
+        id: 10,
+        title: "Edit 10",
+        src: "https://res.cloudinary.com/dkxtthv23/video/upload/v1768755580/sharavan3_z95yuv.mp4",
+        poster:
+            "https://res.cloudinary.com/dkxtthv23/image/upload/v1768756515/Screenshot_2026-01-18_223941_po3cqs.png",
+    },{
+        id: 11,
+        title: "Edit 11",
+        src: "https://res.cloudinary.com/dkxtthv23/video/upload/v1768755809/videos_3_lgtjru.mp4",
+        poster:
+            "https://res.cloudinary.com/dkxtthv23/image/upload/v1768756517/Screenshot_2026-01-18_224434_ahopik.png",
+    },{
+        id: 12,
+        title: "Edit 12",
+        src: "https://res.cloudinary.com/dkxtthv23/video/upload/v1768755680/01_x10ccc.mp4",
+        poster:
+            "https://res.cloudinary.com/dkxtthv23/image/upload/v1768756516/Screenshot_2026-01-18_224025_ma1daz.png",
+    },{
+        id: 13,
+        title: "Edit 13",
+        src: "https://res.cloudinary.com/dkxtthv23/video/upload/v1768755761/brand_kadha_3_ae_finall_gbms0s.mp4",
+        poster:
+            "https://res.cloudinary.com/dkxtthv23/image/upload/v1768756536/Screenshot_2026-01-18_224111_wodno7.png",
+    },{
+        id: 14,
+        title: "Edit 14",
+        src: "https://res.cloudinary.com/dkxtthv23/video/upload/v1768755796/vaibhav_20.2_ty7xxq.mp4",
+        poster:
+            "https://res.cloudinary.com/dkxtthv23/image/upload/v1768756517/Screenshot_2026-01-18_224156_uixu4b.png",
+    },{
+        id: 15,
+        title: "Edit 15",
+        src: "https://res.cloudinary.com/dkxtthv23/video/upload/v1768755789/mnfst_reel_1-_tlztnc.mp4",
+        poster:
+            "https://res.cloudinary.com/dkxtthv23/image/upload/v1768756517/Screenshot_2026-01-18_224314_vwxro4.png",
+    },
+];  
 
 export default function WorkVertical() {
     const [activeIndex, setActiveIndex] = useState(0);
