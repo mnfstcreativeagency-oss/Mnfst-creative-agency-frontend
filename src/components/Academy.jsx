@@ -213,17 +213,22 @@ const PricingCard = ({ price, title, duration, features, isPopular, accentColor,
                 ))}
             </ul>
 
-            <button className={`w-full py-4 rounded-xl font-bold text-lg transition-all transform active:scale-95 ${isPopular
-                ? `${accentBg} hover:opacity-90 text-white shadow-lg`
-                : `bg-transparent border-2 border-[${accentColor}] hover:bg-gray-50/10`
-                }`}
+            <a
+                href="https://wa.me/919502183045?text=Hello! I'm interested in enrolling for the Premiere Pro Training."
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-full py-4 rounded-xl font-bold text-lg transition-all transform active:scale-95 flex items-center justify-center ${isPopular
+                    ? `${accentBg} hover:opacity-90 text-white shadow-lg`
+                    : `bg-transparent border-2 border-[${accentColor}] hover:bg-gray-50/10`
+                    }`}
                 style={{
                     borderColor: !isPopular ? accentColor : undefined,
                     color: !isPopular ? accentColor : 'white',
+                    textDecoration: 'none'
                 }}
             >
                 Enroll Now
-            </button>
+            </a>
         </motion.div>
     );
 };

@@ -20,14 +20,12 @@ const Navbar = () => {
     useMotionValueEvent(scrollY, "change", (latest) => {
         const diff = latest - lastY;
 
-        // Hide if scrolling down and past 100px
         if (diff > 0 && latest > 100) {
             setHidden(true);
         } else if (diff < 0) {
             setHidden(false);
         }
 
-        // Glass effect trigger
         if (latest > 50) {
             setScrolled(true);
         } else {
@@ -61,7 +59,7 @@ const Navbar = () => {
 
                     {/* Brand */}
                     <Link to="/" className="relative z-50 flex items-center gap-2 group">
-                        <img src={isDark ? logoDark : logo} alt="Mnfst" className="h-20 md:h-24 w-auto object-contain" />
+                        <img src={isDark ? logoDark : logo} alt="Mnfst" className="h-16 md:h-24 w-auto object-contain" />
                     </Link>
 
                     {/* Desktop Menu */}
