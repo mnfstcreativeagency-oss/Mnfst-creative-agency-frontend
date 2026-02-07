@@ -12,7 +12,7 @@ const Footer = () => {
             <div className="container mx-auto px-6 flex flex-col md:flex-row justify-end items-center gap-6">
                 <div>
                     <Link to="/" className="inline-block">
-                        <img src={isDark ? logoDark : logo} alt="Mnfst" className="h-10 md:h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" />
+                        <img src={isDark ? logoDark : logo} alt="Mnfst" className="h-16 md:h-20 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" />
                     </Link>
                     <p className="text-gray-400 text-sm mt-2">© 2024 Mnfst. All rights reserved.</p>
                 </div>

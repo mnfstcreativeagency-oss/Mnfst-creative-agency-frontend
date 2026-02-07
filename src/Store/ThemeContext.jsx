@@ -20,10 +20,13 @@ export const ThemeProvider = ({ children }) => {
     // Apply theme class to document root and save to localStorage
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme);
+        const metaThemeColor = document.querySelector('meta[name="theme-color"]');
         if (theme === 'dark') {
             document.documentElement.classList.add('dark');
+            if (metaThemeColor) metaThemeColor.setAttribute('content', '#000000');
         } else {
             document.documentElement.classList.remove('dark');
+            if (metaThemeColor) metaThemeColor.setAttribute('content', '#ffffff');
         }
         localStorage.setItem('mnfst-theme', theme);
     }, [theme]);
