@@ -1,25 +1,28 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaGoogle, FaStar, FaCheckCircle, FaChevronRight } from 'react-icons/fa';
+import { FaGoogle, FaStar, FaCheckCircle, FaChevronRight, FaInstagram } from 'react-icons/fa';
 
 const testimonials = [
     {
         id: 1,
         name: "Lazy Learning",
         review: "Every edit is crafted with precision and eye for detail. Understands the audience pulse and makes every video as engaging as possible. The most important aspect to hire any editor is the turnaround time for the deliverables. Sharavan is the best in maintaining turnaround time, and working in tight deadlines. This instills immense trust on him. I suggest mnfst anyday to any creator looking for professional output from the boring raw footages!",
-        image: "https://res.cloudinary.com/dkxtthv23/image/upload/v1766905060/lazylearning_eglrzi.jpg"
+        image: "/Images/thelazyleaning.jpg",
+        instagram: "https://www.instagram.com/thelazylearning"
     },
     {
         id: 2,
         name: "levelupwithkumar",
         review: "It’s been a great experience working with you. You always deliver the work on time and maintain excellent punctuality throughout the project. What I really appreciate is your patience and flexibility.. no matter how many revisions I requested, you handled every change professionally and ensured complete satisfaction. Your creativity is unique and adds real value to the content. Along with your strong work management skills, your friendly and approachable nature makes collaboration smooth and comfortable. Truly reliable and easy to work with.",
-        image: "https://res.cloudinary.com/dkxtthv23/image/upload/v1766905060/levelupwithkumar_wclkwl.jpg"
+        image: "/Images/levelupwithkumar.jpg",
+        instagram: "https://www.instagram.com/levelupwithkumar"
     },
     {
         id: 3,
         name: "Abhi Top Tech",
         review: "I’ve worked with Sharavan from MNFST Creative Agency, and the experience was excellent. He delivered videos on time, maintained immediate and clear communication, and showed great creativity in every edit. What stood out the most was the deep research he puts into content before editing, which reflects strongly in the final output. I’m completely satisfied with the quality of work and overall collaboration",
-        image: "https://res.cloudinary.com/dkxtthv23/image/upload/v1766905059/abhitopintech_iagykh.jpg"
+        image: "/Images/abhitoptech.jpg",
+        instagram: "https://www.instagram.com/abhi.toptech"
     }
 ];
 
@@ -106,9 +109,15 @@ const TestimonialCard = ({ item }) => {
                         <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{item.date}</p>
                     </div>
                 </div>
-                <div className="p-2 rounded-full shadow-sm border" style={{ backgroundColor: 'var(--bg-primary)', borderColor: 'var(--border-color)' }}>
-                    <FaGoogle className="text-lg" style={{ color: '#4285F4' }} />
-                </div>
+                <a
+                    href={item.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-full shadow-sm border hover:scale-110 transition-transform"
+                    style={{ backgroundColor: 'var(--bg-primary)', borderColor: 'var(--border-color)' }}
+                >
+                    <FaInstagram className="text-lg" style={{ color: '#E1306C' }} />
+                </a>
             </div>
 
             {/* Stars & Tick */}
@@ -125,7 +134,7 @@ const TestimonialCard = ({ item }) => {
             </p>
 
             {/* Read More */}
-            <a href="#" className="font-medium text-sm hover:underline" style={{ color: 'var(--text-muted)' }}>Read more</a>
+            {/* <a href="#" className="font-medium text-sm hover:underline" style={{ color: 'var(--text-muted)' }}>Read more</a> */}
 
         </motion.div>
     );

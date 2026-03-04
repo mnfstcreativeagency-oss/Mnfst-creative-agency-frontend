@@ -123,7 +123,7 @@ const InquirySection = () => {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="flex flex-wrap gap-3"
           >
-            {["Campaigns", "Branding", "Digital Products", "Motion"].map(
+            {["Video Editing", "Branding", "Content Creation", "Design"].map(
               (tag, i) => (
                 <span
                   key={i}

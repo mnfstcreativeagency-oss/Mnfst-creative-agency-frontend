@@ -2,19 +2,19 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 const logos = [
-    { name: "The Lazy Learning", image: "https://res.cloudinary.com/dkxtthv23/image/upload/v1766905060/lazylearning_eglrzi.jpg" },
-    { name: "Level Up With Kumar", image: "https://res.cloudinary.com/dkxtthv23/image/upload/v1766905060/levelupwithkumar_wclkwl.jpg" },
-    { name: "Nihar", image: "https://res.cloudinary.com/dkxtthv23/image/upload/v1766905060/nihar_qqwwfe.jpg" },
-    { name: "Sahara Family Vlogs", image: "https://res.cloudinary.com/dkxtthv23/image/upload/v1766905060/sahara_gunegc.jpg" },
-    { name: "Vaibhav", image: "https://res.cloudinary.com/dkxtthv23/image/upload/v1768757081/WhatsApp_Image_2026-01-18_at_10.47.19_PM_xlwllx.jpg" },
-    { name: "AI With Aakash", image: "https://res.cloudinary.com/dkxtthv23/image/upload/v1766905059/akash_a3vlpr.jpg" },
-    { name: "Abhi Top Tech", image: "https://res.cloudinary.com/dkxtthv23/image/upload/v1766905059/abhitopintech_iagykh.jpg" },
-    { name: "Asian Monk Wall Art", image: "https://res.cloudinary.com/dkxtthv23/image/upload/v1766905059/asain_monk_ezibvo.jpg" },
+    { name: "The Lazy Learning", image: "/Images/thelazyleaning.jpg" },
+    { name: "Level Up With Kumar", image: "/Images/levelupwithkumar.jpg" },
+    { name: "Nihar", image: "/Images/nihar.jpg" },
+    { name: "Sahara Family Vlogs", image: "/Images/Sahara.jpg" },
+    { name: "Bhairav", image: "/Images/Bhirav.jpeg" },
+    { name: "AI With Aakash", image: "/Images/aiwithakkash.jpg" },
+    { name: "Abhi Top Tech", image: "/Images/abhitoptech.jpg" },
+    { name: "Asian Monk Wall Art", image: "/Images/Asainmonk.jpg" },
 ];
 
 const CIRCLE_RADIUS = 600;
 const ITEM_SIZE = 180;
-const GAP_ANGLE = 40;
+const GAP_ANGLE = 45;
 
 const Clients = () => {
     // Start centered at top (-90 degrees)
@@ -27,7 +27,7 @@ const Clients = () => {
         mass: 2
     });
 
-    const visibleItems = [...logos, ...logos, ...logos, ...logos];
+    const visibleItems = logos;
 
     // Gentle auto-rotation
     useEffect(() => {

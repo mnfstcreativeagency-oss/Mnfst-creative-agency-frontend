@@ -38,7 +38,7 @@ const Navbar = () => {
     const navLinks = [
         { title: 'Home', href: '/' },
         { title: 'About', href: '/about' },
-        { title: 'Services', href: '/#services' },
+        // { title: 'Services', href: '/#services' },
         { title: 'Academy', href: '/academy' },
         { title: 'Join Us', href: '/join' },
         // { title: 'FAQs', href: '/faqs' },
@@ -116,16 +116,19 @@ const Navbar = () => {
                                     </Link>
                                 </motion.div>
                             ))}
-                            <motion.a
-                                href="#contact"
+                            <motion.div
                                 initial={{ y: 50, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ delay: 0.6 }}
                                 onClick={() => setIsOpen(false)}
-                                className="mt-8 bg-[#E60023] text-white px-8 py-3 rounded-full font-bold uppercase tracking-widest text-sm"
                             >
-                                Let's Talk
-                            </motion.a>
+                                <Link
+                                    to="/contact"
+                                    className="mt-8 inline-block bg-[#E60023] text-white px-8 py-3 rounded-full font-bold uppercase tracking-widest text-sm"
+                                >
+                                    Let's Talk
+                                </Link>
+                            </motion.div>
                         </div>
                     </motion.div>
                 )}
@@ -205,17 +208,16 @@ const PremiumCTAButton = () => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
-        <motion.a
-            href="#contact"
+        <Link
+            to="/contact"
             className="relative flex items-center justify-center cursor-pointer"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            initial="initial"
-            whileHover="hover"
-            animate={isHovered ? "hover" : "initial"}
         >
-            {/* The Container - Animates width */}
             <motion.div
+                initial="initial"
+                whileHover="hover"
+                animate={isHovered ? "hover" : "initial"}
                 className="rounded-full flex items-center justify-center overflow-hidden"
                 style={{ backgroundColor: 'var(--accent-primary)' }}
                 variants={{
@@ -247,7 +249,7 @@ const PremiumCTAButton = () => {
                     Get in Touch
                 </motion.span>
             </motion.div>
-        </motion.a>
+        </Link>
     );
 };
 

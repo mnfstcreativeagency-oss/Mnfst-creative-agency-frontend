@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BsArrowRight } from 'react-icons/bs';
 import { FaInstagram } from 'react-icons/fa';
-import p1 from '../assets/hero-person-1.png';
-import p2 from '../assets/hero-person-2.png';
-import p3 from '../assets/hero-person-3.png';
+import { Link } from 'react-router-dom';
+
+const MotionLink = motion(Link);
+// import p1 from '../assets/hero-person-1.jpg';
+// import p2 from '../assets/hero-person-2.jpg';
+// import p3 from '../assets/hero-person-3.jpg';
 
 const CreatorCard = ({ name, subs }) => (
     <motion.div
@@ -51,16 +54,16 @@ const Hero = () => {
                         You thrive in the spotlight. We dominate the details. Let us handle the heavy lifting, while your audience rockets to the stars!
                     </p>
 
-                    <motion.a
+                    <MotionLink
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        href="#contact"
+                        to="/contact"
                         className="inline-flex items-center gap-2 text-white px-8 py-4 rounded-full text-lg font-bold shadow-lg transition-all duration-300"
                         style={{ backgroundColor: 'var(--accent-primary)' }}
                     >
                         Get in Touch
                         <BsArrowRight className="text-xl" />
-                    </motion.a>
+                    </MotionLink>
                 </motion.div>
 
                 {/* Subtle Background Decoration (Centered) */}
