@@ -32,7 +32,9 @@ const FloatingContact = () => {
                 {/* Inner flex container to hold buttons with gap */}
                 <div className="flex gap-3 pl-3 pr-1">
                     <motion.a
-                        href="#"
+                        href="https://www.instagram.com/mnfst.ca"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         className="w-[3.5rem] h-[3.5rem] text-white rounded-full shadow-xl flex items-center justify-center flex-shrink-0"
@@ -42,7 +44,9 @@ const FloatingContact = () => {
                     </motion.a>
 
                     <motion.a
-                        href="#"
+                        href="https://wa.me/9502183045"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                         className="w-[3.5rem] h-[3.5rem] text-white rounded-full shadow-xl flex items-center justify-center flex-shrink-0"

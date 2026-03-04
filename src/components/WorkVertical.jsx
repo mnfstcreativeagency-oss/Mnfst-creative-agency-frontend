@@ -5,103 +5,96 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 const videos = [
     {
         id: 1,
-        title: "Edit 1",
-        src: "https://res.cloudinary.com/dkxtthv23/video/upload/abhi_2_tqrqru.mp4",
-        poster:
-            "https://res.cloudinary.com/dkxtthv23/image/upload/v1767422025/abhi_2tqrqrump4_ayvvpw.png",
+        title: "Abhi Top Tech",
+        src: "/Videos/abhi 2.mp4",
+        poster: "/Posters/abhi2poster.png",
     },
     {
         id: 2,
-        title: "Edit 2",
-        src: "https://res.cloudinary.com/dkxtthv23/video/upload/bharath3_h73nr4.mp4",
-        poster:
-            "https://res.cloudinary.com/dkxtthv23/image/upload/v1767422025/tolyowd_d3ex9q.png",
+        title: "Bharath",
+        src: "/Videos/bharath2.mp4",
+        poster: "/Posters/bharath2psoter.png",
     },
     {
         id: 3,
-        title: "Edit 3",
-        src: "https://res.cloudinary.com/dkxtthv23/video/upload/madhuAnna3_h2vtj3.mp4",
-        poster:
-            "https://res.cloudinary.com/dkxtthv23/image/upload/v1767422026/madhuAnna3h2vtj3mp4_vflkts.png",
+        title: "Madhu",
+        src: "/Videos/madhuAnna3.mp4",
+        poster: "/Posters/madhuAnna3poster.png",
     },
     {
         id: 4,
-        title: "Edit 4",
-        src: "https://res.cloudinary.com/dkxtthv23/video/upload/kumarAnna3_zs8axr.mp4",
-        poster:
-            "https://res.cloudinary.com/dkxtthv23/image/upload/v1767422027/kumarAnna3zs8axrmp4_ipnt42.png",
+        title: "Kumar",
+        src: "/Videos/kumarAnna2.mp4",
+        poster: "/Posters/kumarAnna2poster.png",
     },
     {
         id: 5,
-        title: "Edit 5",
-        src: "https://res.cloudinary.com/dkxtthv23/video/upload/sharavan2_gbb1lm.mp4",
-        poster:
-            "https://res.cloudinary.com/dkxtthv23/image/upload/v1767422027/sharavan2gbb1lmmp4_lulm6h.png",
+        title: "Sharavan",
+        src: "/Videos/sharavan1.mp4",
+        poster: "/Posters/sharavan1poster.png",
     },
     {
         id: 6,
-        title: "Edit 6",
-        src: "https://res.cloudinary.com/dkxtthv23/video/upload/04_nok2na.mp4",
-        poster:
-            "https://res.cloudinary.com/dkxtthv23/image/upload/v1767422061/04_nok2namp4poster_kuiup9.png",
+        title: "Edit 05",
+        src: "/Videos/05.mp4",
+        poster: "/Posters/05poster.png",
     },
     {
         id: 7,
-        title: "Edit 7",
-        src: "https://res.cloudinary.com/dkxtthv23/video/upload/v1767383953/NiharAnna3_ez5qzs.mp4",
-        poster:
-            "https://res.cloudinary.com/dkxtthv23/image/upload/v1767422026/nihar_t2vbwh.png",
+        title: "Nihar",
+        src: "/Videos/NiharAnna1.mp4",
+        poster: "/Posters/NiharAnna1poster.png",
     },
     {
         id: 8,
-        title: "Edit 8",
-        src: "https://res.cloudinary.com/dkxtthv23/video/upload/v1768755564/madhuAnna5_ohp5rz.mp4",
-        poster:
-            "https://res.cloudinary.com/dkxtthv23/image/upload/v1768756516/Screenshot_2026-01-18_223719_bivybn.png",
-    },{
-        id: 9,
-        title: "Edit 9",
-        src: "https://res.cloudinary.com/dkxtthv23/video/upload/v1768755579/kumarAnna5_itxulk.mp4",
-        poster:
-            "https://res.cloudinary.com/dkxtthv23/image/upload/v1768756516/Screenshot_2026-01-18_223819_rcrjby.png",
-    },{
-        id: 10,
-        title: "Edit 10",
-        src: "https://res.cloudinary.com/dkxtthv23/video/upload/v1768755580/sharavan3_z95yuv.mp4",
-        poster:
-            "https://res.cloudinary.com/dkxtthv23/image/upload/v1768756515/Screenshot_2026-01-18_223941_po3cqs.png",
-    },{
-        id: 11,
-        title: "Edit 11",
-        src: "https://res.cloudinary.com/dkxtthv23/video/upload/v1768755809/videos_3_lgtjru.mp4",
-        poster:
-            "https://res.cloudinary.com/dkxtthv23/image/upload/v1768756517/Screenshot_2026-01-18_224434_ahopik.png",
-    },{
-        id: 12,
-        title: "Edit 12",
-        src: "https://res.cloudinary.com/dkxtthv23/video/upload/v1768755680/01_x10ccc.mp4",
-        poster:
-            "https://res.cloudinary.com/dkxtthv23/image/upload/v1768756516/Screenshot_2026-01-18_224025_ma1daz.png",
-    },{
-        id: 13,
-        title: "Edit 13",
-        src: "https://res.cloudinary.com/dkxtthv23/video/upload/v1768755761/brand_kadha_3_ae_finall_gbms0s.mp4",
-        poster:
-            "https://res.cloudinary.com/dkxtthv23/image/upload/v1768756536/Screenshot_2026-01-18_224111_wodno7.png",
-    },{
-        id: 14,
-        title: "Edit 14",
-        src: "https://res.cloudinary.com/dkxtthv23/video/upload/v1768755796/vaibhav_20.2_ty7xxq.mp4",
-        poster:
-            "https://res.cloudinary.com/dkxtthv23/image/upload/v1768756517/Screenshot_2026-01-18_224156_uixu4b.png",
-    },{
-        id: 15,
-        title: "Edit 15",
-        src: "https://res.cloudinary.com/dkxtthv23/video/upload/v1768755789/mnfst_reel_1-_tlztnc.mp4",
-        poster:
-            "https://res.cloudinary.com/dkxtthv23/image/upload/v1768756517/Screenshot_2026-01-18_224314_vwxro4.png",
+        title: "Bhairav",
+        src: "/Videos/bhh2 (1).mp4",
+        poster: "/Posters/bhh2poster.png",
     },
-];  
+    {
+        id: 9,
+        title: "Jan 6",
+        src: "/Videos/Jan6.mp4",
+        poster: "/Posters/Jan6poster.png",
+    },
+    {
+        id: 10,
+        title: "Vaibhav",
+        src: "/Videos/vaibhav 20.2.mp4",
+        poster: "/Posters/vaibhav 20.2poster.png",
+    },
+    {
+        id: 11,
+        title: "MNFST Reel",
+        src: "/Videos/mnfst reel 1-.mp4",
+        poster: "/Posters/mnfst reel 1-poster.png",
+    },
+    {
+        id: 12,
+        title: "Sahara Family",
+        src: "/Videos/SAHARAFAM1.mp4",
+        poster: "/Posters/SAHARAFAM1.png",
+    },
+    {
+        id: 13,
+        title: "Doctor Podcast",
+        src: "/Videos/doctor podcast edit 1.mp4",
+        poster: "/Posters/doctor podcast edit 1poster.png",
+    },
+    {
+        id: 14,
+        title: "Asian Monk",
+        src: "/Videos/asian monk reel 1 .mp4",
+        poster: "/Posters/asian monk reel 1poster.png",
+    },
+    {
+        id: 15,
+        title: "Vaibhav Reel 4",
+        src: "/Videos/vaibhav reeeel 4.mp4",
+        poster: "/Posters/vaibhav reeeel 4poster.png",
+    },
+];
+
 
 export default function WorkVertical() {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -145,8 +138,8 @@ export default function WorkVertical() {
     }[offset] || { scale: 0, opacity: 0, blur: 0, x: 0, z: 0 });
 
     return (
-        <section className="w-full py-24 overflow-hidden">
-            <h2 className="text-center text-5xl font-bold text-white mb-16">
+        <section className="w-full py-24 overflow-hidden" style={{ color: 'var(--text-primary)' }}>
+            <h2 className="text-center text-5xl font-bold mb-16" style={{ color: 'var(--text-primary)' }}>
                 Our viral <span className="text-accent">short-form</span> edits
             </h2>
 
@@ -154,13 +147,25 @@ export default function WorkVertical() {
                 {/* arrows */}
                 <button
                     onClick={handlePrev}
-                    className="absolute left-6 z-50 p-4 rounded-full bg-white/10 text-white"
+                    className="absolute left-6 z-50 p-4 rounded-full border transition-all hover:scale-110"
+                    style={{
+                        backgroundColor: 'var(--bg-primary)',
+                        color: 'var(--text-primary)',
+                        borderColor: 'var(--border-color)',
+                        boxShadow: 'var(--shadow-color)'
+                    }}
                 >
                     <FaChevronLeft />
                 </button>
                 <button
                     onClick={handleNext}
-                    className="absolute right-6 z-50 p-4 rounded-full bg-white/10 text-white"
+                    className="absolute right-6 z-50 p-4 rounded-full border transition-all hover:scale-110"
+                    style={{
+                        backgroundColor: 'var(--bg-primary)',
+                        color: 'var(--text-primary)',
+                        borderColor: 'var(--border-color)',
+                        boxShadow: 'var(--shadow-color)'
+                    }}
                 >
                     <FaChevronRight />
                 </button>
