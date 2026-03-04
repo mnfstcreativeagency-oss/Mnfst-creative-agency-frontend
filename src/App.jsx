@@ -7,6 +7,7 @@ import ThemeToggle from './components/ThemeToggle';
 import Academy from './components/Academy';
 import NotFound from './components/Notfound';
 import JoinUs from './pages/JoinUs';
+import ContactPage from './pages/ContactPage';
 import Navbar from './components/Navbar';
 import About from './components/About';
 
@@ -31,6 +32,7 @@ function App() {
           <Route path="/faqs" element={<FAQPage />} />
           <Route path="/academy" element={<Academy />} />
           <Route path="/join" element={<JoinUs />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </AnimatePresence>
