@@ -14,7 +14,7 @@ const Footer = () => {
                     <Link to="/" className="inline-block">
                         <img src={isDark ? logoDark : logo} alt="Mnfst" className="h-16 md:h-20 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" />
                     </Link>
-                    <p className="text-gray-400 text-sm mt-2">© 2024 Mnfst. All rights reserved.</p>
+                    <p className="text-gray-400 text-sm mt-2">© 2026 Mnfst. All rights reserved.</p>
                 </div>
 
                 {/* <div className="flex gap-6">

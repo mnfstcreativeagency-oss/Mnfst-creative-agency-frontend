@@ -159,7 +159,7 @@ const Academy = () => {
                     <div className="p-12 rounded-3xl border border-dashed border-gray-500/30 bg-gray-500/5 max-w-4xl mx-auto">
                         <h3 className="text-2xl font-bold mb-4">More Resources</h3>
                         <p className="mb-6 opacity-70">Check out our Superprofile for exclusive assets and templates.</p>
-                        <a href="#" className={`inline-flex items-center gap-2 ${accentText} font-bold text-lg underline underline-offset-4 transition-colors`}>
+                        <a href="https://superprofile.bio/course/149bfeef-7265-47ce-9ec5-2baf798bc94b" target='__blank' className={`inline-flex items-center gap-2 ${accentText} font-bold text-lg underline underline-offset-4 transition-colors`}>
                             Check out our Superprofile <FaArrowRight />
                         </a>
                     </div>
