@@ -10,6 +10,7 @@ import JoinUs from './pages/JoinUs';
 import ContactPage from './pages/ContactPage';
 import Navbar from './components/Navbar';
 import About from './components/About';
+import OurServices from './pages/OurServices';
 
 import FloatingContact from './components/FloatingContact';
 import SpotlightCursor from './components/SpotlightCursor';
@@ -28,6 +29,7 @@ function App() {
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/ourservices" element={<OurServices />} />
           <Route path="/service/:id" element={<ServiceDetail />} />
           <Route path="/faqs" element={<FAQPage />} />
           <Route path="/academy" element={<Academy />} />
