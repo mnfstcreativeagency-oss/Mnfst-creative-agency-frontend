@@ -12,8 +12,8 @@ const ServiceDetail = () => {
     // In a real app, fetch from API or store
     const serviceData = {
         'videography': {
-            title: "OUR VIDEOGRAPHY",
-            filters: ["ALL VIDEOS", "ED-TECH", "PRODUCTS AND ACCESSORIES", "FOOD & BEVERAGES"],
+            title: "LONG FORM VIDEOGRAPHY",
+            filters: ["ALL VIDEOS", "ED-TECH", "PRODUCTS", "PODCASTS"],
             images: [
                 "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop",
                 "https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=2074&auto=format&fit=crop",
@@ -23,13 +23,32 @@ const ServiceDetail = () => {
                 "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44c?q=80&w=1000&auto=format&fit=crop"
             ]
         },
+
+        'short-form': {
+            title: "VIRAL SHORT FORM",
+            filters: ["ALL REELS", "TRENDS", "VFX SHORTS", "PROMOS"],
+            images: [
+                "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1536240478700-b869070f9279?q=80&w=1000&auto=format&fit=crop"
+            ]
+        },
         'website-design': {
-            title: "WEBSITE DESIGN",
+            title: "CREATIVE & WEBSITE DESIGN",
             filters: ["ALL PROJECTS", "E-COMMERCE", "SAAS", "LANDING PAGES"],
             images: [
                 "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1000&auto=format&fit=crop",
                 "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=1000&auto=format&fit=crop",
                 "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1000&auto=format&fit=crop"
+            ]
+        },
+        'copywriting': {
+            title: "COPYWRITING & STRATEGY",
+            filters: ["ALL SCRIPTS", "RETENTION HOOKS", "YOUTUBE SCRIPTS", "AD COPY"],
+            images: [
+                "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1000&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=1000&auto=format&fit=crop"
             ]
         },
         'cgi-animation': {
@@ -39,13 +58,44 @@ const ServiceDetail = () => {
                 "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop",
                 "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000&auto=format&fit=crop"
             ]
-        }
+        },
+        'podcast-video-editing': {
+            title: "Podcast Video Editing",
+            filters: ["ALL PODCASTS", "INTERVIEWS", "AUDIO"],
+            images: []
+        },
+        'long-form-video-editing': {
+            title: "LONG FORM Video Editing",
+            filters: ["ALL VIDEOS", "ED-TECH", "PRODUCTS", "PODCASTS"],
+            images: []
+        },
+        'ugc-video-editing': {
+            title: "UGC Video Editing",
+            filters: ["ALL UGC", "SOCIAL", "TIKTOK"],
+            images: []
+        },
+
+        // Shorts/Reel service with video (images will be loaded dynamically)
+        'shorts-reel-video-editing': {
+            title: "SHORTS / REELS VIDEO EDITING",
+            filters: ["ALL REELS", "TRENDS", "VFX"],
+            images: []
+        },
+
     };
+    // Dynamically load all shorts/reels videos from public folder
+    const shortsVideos = Object.values(import.meta.globEager('/videos/*.mp4', { eager: true, as: 'url' })).map(url => url);
+    if (serviceData['shorts-reel-video-editing']) {
+        serviceData['shorts-reel-video-editing'].images = shortsVideos;
+    }
+
+
+
 
     const data = serviceData[id] || serviceData['videography'];
 
     return (
-        <div className="min-h-screen" style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
+        <div className="min-h-screen pt-24" style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
             {/* Header / Nav */}
             <div className="container mx-auto px-6 py-8 flex items-center justify-between">
                 <button onClick={() => navigate(-1)} className="transition-colors flex items-center gap-2" style={{ color: 'var(--text-secondary)' }}>
@@ -93,7 +143,11 @@ const ServiceDetail = () => {
                             className="aspect-square rounded-lg overflow-hidden relative group cursor-pointer border"
                             style={{ backgroundColor: 'var(--bg-secondary)', borderColor: 'var(--border-color)' }}
                         >
-                            <img src={img} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                              {img.endsWith('.mp4') ? (
+                                <video src={img} autoPlay loop muted className="w-full h-full object-cover" />
+                              ) : (
+                                <img src={img} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                              )}
                             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                         </motion.div>
                     ))}

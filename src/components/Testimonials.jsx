@@ -48,9 +48,9 @@ const Testimonials = () => {
                             <span className="italic text-gray-400">Proven Results.</span>
                         </h2>
 
-                        <button className="px-8 py-3 border-2 border-primary rounded-full font-bold text-primary hover:bg-primary hover:text-white transition-colors duration-300">
+                        {/* <button className="px-8 py-3 border-2 border-primary rounded-full font-bold text-primary hover:bg-primary hover:text-white transition-colors duration-300">
                             View All Reviews
-                        </button>
+                        </button> */}
                     </div>
 
                     {/* RIGHT COLUMN: Carousel Grid */}
