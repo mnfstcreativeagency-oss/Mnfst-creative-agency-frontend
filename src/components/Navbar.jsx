@@ -38,10 +38,9 @@ const Navbar = () => {
     const navLinks = [
         { title: 'Home', href: '/' },
         { title: 'About', href: '/about' },
-        // { title: 'Services', href: '/#services' },
+        { title: 'Our Services', href: '/ourservices' },
         { title: 'Academy', href: '/academy' },
         { title: 'Join Us', href: '/join' },
-        // { title: 'FAQs', href: '/faqs' },
     ];
 
     return (
@@ -205,6 +204,8 @@ const ServicesDropdown = ({ title, href }) => {
 };
 
 const PremiumCTAButton = () => {
+    const { theme } = useTheme();
+    const isDark = theme === 'dark';
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -240,6 +241,7 @@ const PremiumCTAButton = () => {
                 {/* Hover State: Text */}
                 <motion.span
                     className="whitespace-nowrap font-bold text-primary font-space"
+                    style={{ color: isDark ? '#EAB308' : '#EF4444' }}
                     variants={{
                         initial: { opacity: 0, y: 20 },
                         hover: { opacity: 1, y: 0 }

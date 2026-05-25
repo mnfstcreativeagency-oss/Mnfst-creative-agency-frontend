@@ -43,11 +43,11 @@ const Hero = () => {
                     className="max-w-4xl flex flex-col items-center"
                 >
                     <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.1] font-bold font-space mb-6 tracking-tight" style={{ color: 'var(--text-primary)' }}>
-                        Empowering the <br />
+                        Empowering brands  <br />
                         <span style={{ color: 'var(--accent-primary)' }}>
-                            planet's most iconic
+                            that shape tomorrow
                         </span> <br />
-                        creators.
+
                     </h1>
 
                     <p className="text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed font-dm" style={{ color: 'var(--text-secondary)' }}>

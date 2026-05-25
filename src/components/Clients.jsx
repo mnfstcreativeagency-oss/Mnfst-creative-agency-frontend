@@ -6,7 +6,7 @@ const logos = [
     { name: "Level Up With Kumar", image: "/Images/levelupwithkumar.jpg" },
     { name: "Nihar", image: "/Images/nihar.jpg" },
     { name: "Sahara Family Vlogs", image: "/Images/Sahara.jpg" },
-    { name: "Bhairav", image: "/Images/Bhirav.jpeg" },
+    { name: "Pixelplanet", image: "/Images/pixelplanet.png" },
     { name: "AI With Aakash", image: "/Images/aiwithakkash.jpg" },
     { name: "Abhi Top Tech", image: "/Images/abhitoptech.jpg" },
     { name: "Asian Monk Wall Art", image: "/Images/Asainmonk.jpg" },
@@ -95,7 +95,7 @@ const Clients = () => {
                         Trusted by
                     </h2>
                     <h2 className="text-5xl md:text-6xl font-chewy text-accent tracking-wide">
-                        Creators
+                        Creators & Brands
                     </h2>
                 </div>
             </div>

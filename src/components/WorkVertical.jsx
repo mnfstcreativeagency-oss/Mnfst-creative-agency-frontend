@@ -107,12 +107,14 @@ export default function WorkVertical() {
     const handleNext = () => setActiveIndex((p) => p + 1);
     const handlePrev = () => setActiveIndex((p) => p - 1);
 
-    /* autoplay timer */
+    /* autoplay when video ends or when autoplay becomes active and the current video is already ended */
     useEffect(() => {
         if (!isAutoPlaying) return;
-        const t = setInterval(() => setActiveIndex((p) => p + 1), 4000);
-        return () => clearInterval(t);
-    }, [isAutoPlaying]);
+        const activeVideo = videoRefs.current[getIndex(activeIndex)];
+        if (activeVideo && activeVideo.ended) {
+            handleNext();
+        }
+    }, [isAutoPlaying, activeIndex]);
 
     /* control playback */
     useEffect(() => {
@@ -202,11 +204,15 @@ export default function WorkVertical() {
                                     className={`w-full h-full object-cover ${!isCenter ? "pointer-events-none" : ""
                                         }`}
                                     muted
-                                    loop
+                                    loop={false}
                                     playsInline
                                     preload={isCenter ? "auto" : "metadata"}
                                     controls={isCenter}
-
+                                    onEnded={() => {
+                                        if (isCenter && isAutoPlaying) {
+                                            handleNext();
+                                        }
+                                    }}
                                 />
                             </div>
                         </motion.div>
