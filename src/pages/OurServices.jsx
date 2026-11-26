@@ -42,6 +42,16 @@ const services = [
     bgImage: "/Images/ugc.png",
     description: "Authentic and compelling editing of user-generated footage, enhancing brand storytelling with a personal touch.",
     slug: "ugc-video-editing"
+  },
+  {
+    id: 5,
+    title: "Real Estate",
+    category: "Property Showcase",
+    year: "LUXURY & COMMERCIAL",
+    image: "/Images/service_real_estate.jpg",
+    bgImage: "/Images/service_real_estate.jpg",
+    description: "High-impact architectural and luxury property edits featuring smooth speed ramps, drone transitions, and cinematic color grading.",
+    slug: "real-estate-video-editing"
   }
 ];
 
@@ -223,10 +233,13 @@ export default function OurServices() {
                 {currentService.title.split("").map((char, idx) => (
                   <span key={idx} className="relative inline-block overflow-hidden">
                     <motion.span
-                       style={{ color: isDark ? '#EAB308' : '#EF4444' }}
                       variants={titleVariants}
                       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                      className="inline-block" style={{ whiteSpace: char === " " ? "pre" : "normal" }}
+                      className="inline-block"
+                      style={{
+                        color: isDark ? '#EAB308' : '#EF4444',
+                        whiteSpace: char === " " ? "pre" : "normal",
+                      }}
                     >
                       {char}
                     </motion.span>
@@ -272,7 +285,7 @@ export default function OurServices() {
         </div>
 
         {/* Bottom Section: Progress indicators */}
-        <div className="w-full max-w-5xl mx-auto grid grid-cols-4 gap-4 pointer-events-auto">
+        <div className="w-full max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-4 pointer-events-auto">
           {services.map((item, idx) => {
             const isActive = idx === index;
             return (

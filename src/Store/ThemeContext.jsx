@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { ThemeContext } from './useTheme';
 
 export const ThemeProvider = ({ children }) => {
-    // Get initial theme from localStorage or default to 'light'
+    // Get initial theme from localStorage or default to 'dark'
     const [theme, setTheme] = useState(() => {
         const savedTheme = localStorage.getItem('mnfst-theme');
-        return savedTheme || 'light';
+        return savedTheme || 'dark';
     });
 
     // Apply theme class to document root and save to localStorage
