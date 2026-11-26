@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BsArrowRight } from 'react-icons/bs';
 import { FaInstagram } from 'react-icons/fa';
@@ -30,8 +30,6 @@ const CreatorCard = ({ name, subs }) => (
 );
 
 const Hero = () => {
-    const [hoveredCreator, setHoveredCreator] = useState(null);
-
     return (
         <section className="relative w-full min-h-screen flex items-center justify-center pt-32 pb-20 overflow-hidden" style={{ backgroundColor: 'transparent', color: 'var(--text-primary)' }}>
             <div className="container mx-auto px-6 z-20 flex flex-col items-center text-center">

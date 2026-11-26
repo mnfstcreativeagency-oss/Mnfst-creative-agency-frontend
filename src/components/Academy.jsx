@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FaPlay, FaCheck, FaArrowRight, FaVideo } from 'react-icons/fa';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { useTheme } from '../Store/ThemeContext';
+import { useTheme } from '../Store/useTheme';
 
 import thumbnail from '../assets/premier-pro-video-thumbnail.jpg';
 
@@ -172,8 +172,6 @@ const Academy = () => {
 };
 
 const PricingCard = ({ price, title, duration, features, isPopular, accentColor, accentBg, accentBorder, accentShadow, isDark }) => {
-
-    const textColor = isPopular ? accentColor : 'var(--text-primary)';
 
     return (
         <motion.div

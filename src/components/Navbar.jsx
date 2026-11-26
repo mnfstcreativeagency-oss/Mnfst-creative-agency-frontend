@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { HiMenuAlt4, HiX } from 'react-icons/hi';
 import { BsArrowRight } from 'react-icons/bs';
 import { FaChevronDown } from 'react-icons/fa';
-import { useTheme } from '../Store/ThemeContext';
+import { useTheme } from '../Store/useTheme';
 import logo from '../assets/logo-new.png';
 import logoDark from '../assets/logo-dark.png';
 
@@ -13,7 +13,6 @@ const Navbar = () => {
     const isDark = theme === 'dark';
     const { scrollY } = useScroll();
     const [hidden, setHidden] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [lastY, setLastY] = useState(0);
 
@@ -24,12 +23,6 @@ const Navbar = () => {
             setHidden(true);
         } else if (diff < 0) {
             setHidden(false);
-        }
-
-        if (latest > 50) {
-            setScrolled(true);
-        } else {
-            setScrolled(false);
         }
 
         setLastY(latest);

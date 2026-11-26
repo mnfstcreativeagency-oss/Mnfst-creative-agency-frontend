@@ -12,7 +12,6 @@ import {
   FaTimes,
   FaBriefcase,
 } from "react-icons/fa";
-import { useTheme } from "../Store/ThemeContext";
 import { apiPath } from "../utils/api";
 
 const roles = [
@@ -58,7 +57,6 @@ const JoinUs = () => {
   });
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState({ type: "", message: "" });
-  const { isDark } = useTheme();
 
   const openModal = (role) => {
     setSelectedRole(role);
@@ -99,7 +97,7 @@ const JoinUs = () => {
           message: data.message || "Something went wrong :(",
         });
       }
-    } catch (error) {
+    } catch {
       setStatus({ type: "error", message: "Network error. Try again later." });
     } finally {
       setLoading(false);
