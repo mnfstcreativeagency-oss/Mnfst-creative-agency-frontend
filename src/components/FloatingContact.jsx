@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { BsChatDotsFill } from 'react-icons/bs';
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
-import { useTheme } from '../Store/ThemeContext';
+import { useTheme } from '../Store/useTheme';
 
 const FloatingContact = () => {
     const { isDark } = useTheme();

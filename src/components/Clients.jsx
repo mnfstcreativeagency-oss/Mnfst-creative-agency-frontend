@@ -1,5 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import React, { useEffect } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 const logos = [
     { name: "The Lazy Learning", image: "/Images/thelazyleaning.jpg" },

@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowDown, ArrowUp } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import { useTheme } from '../Store/ThemeContext';
+import { useTheme } from '../Store/useTheme';
 const services = [
   {
     id: 1,
@@ -43,26 +42,48 @@ const services = [
     bgImage: "/Images/ugc.png",
     description: "Authentic and compelling editing of user-generated footage, enhancing brand storytelling with a personal touch.",
     slug: "ugc-video-editing"
+  },
+  {
+    id: 5,
+    title: "Real Estate",
+    category: "Property Showcase",
+    year: "LUXURY & COMMERCIAL",
+    image: "/Images/service_real_estate.jpg",
+    bgImage: "/Images/service_real_estate.jpg",
+    description: "High-impact architectural and luxury property edits featuring smooth speed ramps, drone transitions, and cinematic color grading.",
+    slug: "real-estate-video-editing"
   }
 ];
 
 const AUTOPLAY_TIME = 6000; // 6 seconds per slide
 
 export default function OurServices() {
-  const navigate = useNavigate();
   const { theme } = useTheme();
   const isDark = theme === 'dark';
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0); // 1 = down/next, -1 = up/prev
-  const [isAnimating, setIsAnimating] = useState(false);
+  const isAnimatingRef = useRef(false);
   const [progress, setProgress] = useState(0);
   const progressInterval = useRef(null);
   const touchStartY = useRef(0);
   const lastScrollTime = useRef(0);
 
+  const handleNext = useCallback(() => {
+    if (isAnimatingRef.current) return;
+    setDirection(1);
+    setProgress(0);
+    setIndex((prev) => (prev + 1) % services.length);
+  }, []);
+
+  const handlePrev = useCallback(() => {
+    if (isAnimatingRef.current) return;
+    setDirection(-1);
+    setProgress(0);
+    setIndex((prev) => (prev - 1 + services.length) % services.length);
+  }, []);
+
   // Restart timer when index changes
   useEffect(() => {
-    setProgress(0);
     if (progressInterval.current) clearInterval(progressInterval.current);
 
     const start = Date.now();
@@ -80,19 +101,7 @@ export default function OurServices() {
     return () => {
       if (progressInterval.current) clearInterval(progressInterval.current);
     };
-  }, [index]);
-
-  const handleNext = () => {
-    if (isAnimating) return;
-    setDirection(1);
-    setIndex((prev) => (prev + 1) % services.length);
-  };
-
-  const handlePrev = () => {
-    if (isAnimating) return;
-    setDirection(-1);
-    setIndex((prev) => (prev - 1 + services.length) % services.length);
-  };
+  }, [index, handleNext]);
 
   const handleWheel = (e) => {
     const now = Date.now();
@@ -146,8 +155,8 @@ export default function OurServices() {
           animate={{ opacity: 1, scale: 1.05 }}
           exit={{ opacity: 0, scale: 0.95 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          onAnimationStart={() => setIsAnimating(true)}
-          onAnimationComplete={() => setIsAnimating(false)}
+          onAnimationStart={() => { isAnimatingRef.current = true; }}
+          onAnimationComplete={() => { isAnimatingRef.current = false; }}
           className="absolute inset-0 w-full h-full"
         >
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/90 z-10" />
@@ -224,10 +233,13 @@ export default function OurServices() {
                 {currentService.title.split("").map((char, idx) => (
                   <span key={idx} className="relative inline-block overflow-hidden">
                     <motion.span
-                       style={{ color: isDark ? '#EAB308' : '#EF4444' }}
                       variants={titleVariants}
                       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                      className="inline-block" style={{ whiteSpace: char === " " ? "pre" : "normal" }}
+                      className="inline-block"
+                      style={{
+                        color: isDark ? '#EAB308' : '#EF4444',
+                        whiteSpace: char === " " ? "pre" : "normal",
+                      }}
                     >
                       {char}
                     </motion.span>
@@ -273,7 +285,7 @@ export default function OurServices() {
         </div>
 
         {/* Bottom Section: Progress indicators */}
-        <div className="w-full max-w-5xl mx-auto grid grid-cols-4 gap-4 pointer-events-auto">
+        <div className="w-full max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-4 pointer-events-auto">
           {services.map((item, idx) => {
             const isActive = idx === index;
             return (
@@ -282,6 +294,7 @@ export default function OurServices() {
                 onClick={() => {
                   if (idx !== index) {
                     setDirection(idx > index ? 1 : -1);
+                    setProgress(0);
                     setIndex(idx);
                   }
                 }}
