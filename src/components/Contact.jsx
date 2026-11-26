@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useTheme } from '../Store/ThemeContext';
 
 const Contact = () => {
-    const { isDark } = useTheme();
     const [email, setEmail] = useState('');
 
     const categories = [

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { useTheme } from '../Store/ThemeContext';
+import { useTheme } from '../Store/useTheme';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { FaArrowLeft } from 'react-icons/fa6';
@@ -90,13 +90,12 @@ const NotFound = () => {
         };
 
         const connect = () => {
-            let opacityValue = 1;
             for (let a = 0; a < particles.length; a++) {
                 for (let b = a; b < particles.length; b++) {
                     let distance = ((particles[a].x - particles[b].x) * (particles[a].x - particles[b].x))
                         + ((particles[a].y - particles[b].y) * (particles[a].y - particles[b].y));
                     if (distance < (canvas.width / 7) * (canvas.height / 7)) {
-                        opacityValue = 1 - (distance / 20000);
+                        const opacityValue = 1 - (distance / 20000);
                         ctx.strokeStyle = isDark ? `rgba(255, 167, 38, ${opacityValue})` : `rgba(239, 68, 68, ${opacityValue})`;
                         ctx.lineWidth = 1;
                         ctx.beginPath();
