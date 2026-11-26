@@ -43,7 +43,7 @@ const HorizontalZipperCard = ({ service }) => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const handleDragEnd = (_, info) => {
+    const handleDragEnd = () => {
         if (x.get() > dragLimit * 0.9) {
             controls.start({ x: dragLimit });
             setTimeout(() => {

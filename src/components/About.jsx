@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
-import { useTheme } from '../Store/ThemeContext';
+import { useTheme } from '../Store/useTheme';
 
 // const teamMembers = [
 //     {
@@ -219,7 +219,7 @@ const About = () => {
                         onDragStart={() => autoRotateX.stop()}
                         onDragEnd={() => {
                             setTimeout(() => {
-                                const interval = setInterval(() => {
+                                setInterval(() => {
                                     const current = autoRotateX.get();
                                     autoRotateX.set(current - 0.5);
                                 }, 50);
