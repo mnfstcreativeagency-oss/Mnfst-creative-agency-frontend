@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from '../Store/ThemeContext';
+import { useTheme } from '../Store/useTheme';
 import { motion } from 'framer-motion';
 
 const ThemeToggle = () => {

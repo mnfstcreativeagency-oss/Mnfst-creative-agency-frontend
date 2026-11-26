@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaTwitter, FaInstagram, FaLinkedin, FaYoutube, FaWhatsapp } from 'react-icons/fa';
 import logo from '../assets/logo-new.png';
 import logoDark from '../assets/logo-dark.png';
-import { useTheme } from '../Store/ThemeContext';
+import { useTheme } from '../Store/useTheme';
 
 const Footer = () => {
     const { isDark } = useTheme();
